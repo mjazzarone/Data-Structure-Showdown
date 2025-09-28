@@ -32,7 +32,10 @@ result = has_duplicates([])
 print(result)
 result = has_duplicates([80000, 0, 80000])
 print(result)
-
+'''I chose a set for this problem becuase we are checking whether a value already exists
+which is easy for a set. In the program we have a function that asks for a list of values,
+stores each product ID seen into a set and if the ID is already in the set, the function returns true
+If not, it returns false.'''
 """
 Problem 2: Order Manager
 
@@ -45,6 +48,7 @@ task_queue.add_task("Email follow-up")
 task_queue.add_task("Code review")
 task_queue.remove_oldest_task() → "Email follow-up"
 """
+
 class Node:
     def __init__(self, task):
         self.task = task
@@ -78,6 +82,9 @@ task_queue.add_task("Code review")
 print(task_queue.remove_oldest_task())  
 print(task_queue.remove_oldest_task())  
 print(task_queue.remove_oldest_task())
+'''I chose a queue for this problem because in it we are looking to deal with tasks on a first come first serve basis.
+The program first sets a Node class and a front and rear node. Then add_task adds a task to the queue and puts it at the back.
+Then, remove_oldest_task removes the first task executed at the front of the list.'''
 
 """
 Problem 3: Unique Value Counter
@@ -106,3 +113,6 @@ tracker.add(10)
 tracker.add(20)
 tracker.add(10)
 print(tracker.get_unique_count())
+'''I chose a set for this problem because we are looking to only keep track of exclusive numbers in a list.
+This program initializes an empty set using __init__. add adds a value to the set, and then get_unique_count counts the number of items in the set
+because a set won't accept duplicate values and will only keep exclusive ones.'''
