@@ -13,9 +13,25 @@ Output: False
 """
 
 def has_duplicates(product_ids):
-    # Your implementation here
-    pass
+    seen = set()
+    for id in product_ids:
+        if id in seen:
+            return True
+        seen.add(id)
+    return False
 
+result = has_duplicates([10, 20, 30, 20, 40])
+print(result)
+result = has_duplicates([1, 2, 3, 4, 5])
+print(result)
+result = has_duplicates([1, 1, 1, 1, 1])
+print(result)
+result = has_duplicates([2, 2])
+print(result)
+result = has_duplicates([])
+print(result)
+result = has_duplicates([80000, 0, 80000])
+print(result)
 
 """
 Problem 2: Order Manager
@@ -29,18 +45,39 @@ task_queue.add_task("Email follow-up")
 task_queue.add_task("Code review")
 task_queue.remove_oldest_task() → "Email follow-up"
 """
+class Node:
+    def __init__(self, task):
+        self.task = task
+        self.next = None
 
 class TaskQueue:
     def __init__(self):
-        # Your initialization here
-        pass
+        self.front = None
+        self.rear = None
 
     def add_task(self, task):
-        pass
+        new_task = Node(task)
+        if not self.front:
+            self.front = new_task
+            self.rear = new_task
+        else:
+            self.rear.next = new_task
+            self.rear = new_task
 
     def remove_oldest_task(self):
-        pass
-
+        if not self.front:
+            return None
+        removed_task = self.front
+        self.front = self.front.next
+        if not self.front:
+            self.rear = None
+        return removed_task.task
+task_queue = TaskQueue()
+task_queue.add_task("Email follow-up")
+task_queue.add_task("Code review")
+print(task_queue.remove_oldest_task())  
+print(task_queue.remove_oldest_task())  
+print(task_queue.remove_oldest_task())
 
 """
 Problem 3: Unique Value Counter
@@ -57,10 +94,15 @@ tracker.get_unique_count() → 2
 
 class UniqueTracker:
     def __init__(self):
-        pass
+        self.unique_values = set()
 
     def add(self, value):
-        pass
+        self.unique_values.add(value)
 
     def get_unique_count(self):
-        pass
+        return len (self.unique_values)
+tracker = UniqueTracker()
+tracker.add(10)
+tracker.add(20)
+tracker.add(10)
+print(tracker.get_unique_count())
